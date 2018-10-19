@@ -4,8 +4,9 @@
   "description": "for self practice",
   "main": "entry.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "webpack-dev-server --host 0.0.0.0 --config ./client/webpack.config.js"
+    "client": "webpack-dev-server --host 0.0.0.0 --config ./client/webpack.config.js",
+    "test:unit": "mocha --require babel-core/register --require ./client/test/helpers.js --require ./client/test/dom.js --require ignore-styles 'client/test/src/**/*.spec.js'",
+    "test:unit:watch": "npm run test:unit -- --watch"
   },
   "repository": {
     "type": "git",
@@ -55,6 +56,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
+    "chai": "^4.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.7.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -64,6 +66,8 @@
     "eslint-plugin-react": "^7.11.1",
     "file-loader": "^2.0.0",
     "flow-bin": "^0.83.0",
+    "jsdom": "^12.2.0",
+    "mocha": "^5.2.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",
