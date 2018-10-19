@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 
 import { FETCH_FOOD_LIST } from '../queries/Global.js';
+import Landing from './Landing.jsx';
 
 const styles = {
   placement: {
@@ -36,7 +37,7 @@ class MainBoard extends Component<Props> {
     return (
       <div style={styles.placement}>
         <Switch>
-          <Route path="/" component={null} />
+          <Route path="/" component={Landing} />
         </Switch>
       </div>
     );
