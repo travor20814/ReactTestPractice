@@ -6,6 +6,9 @@
       "jsx": true,
     }
   },
+  "env": {
+    "mocha": true,
+  },
   "plugins": [
     "react",
     "flowtype",
