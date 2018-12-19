@@ -53,9 +53,11 @@ class Landing extends PureComponent {
   }
 }
 
-const formHook = reduxForm({
+export const formHook = reduxForm({
   form: FORM_NAME,
 });
+
+export { Landing };
 
 export default formHook(
   radium(

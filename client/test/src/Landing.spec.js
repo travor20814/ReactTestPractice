@@ -2,13 +2,20 @@ import React from 'react';
 import {
   shallow,
 } from 'enzyme';
-import Landing from '../../containers/Landing.jsx';
+import ErrorBoundary from '../../containers/ErrorBoundary.jsx';
+import {
+  Landing,
+  formHook,
+} from '../../containers/Landing.jsx';
 
 describe('Landing Component', () => {
-  const mountedLanding = shallow(<Landing />);
+  const wrapper = shallow(<Landing />);
+
+  it('wrap with Error boundary', () => {
+    expect(wrapper.find(ErrorBoundary)).to.have.lengthOf(1);
+  });
 
   it('always renders a form', () => {
-    const divs = mountedLanding.find('form');
-    expect(divs.length).to.equal(1);
+    expect(wrapper.find('form')).to.have.lengthOf(1);
   });
 });
