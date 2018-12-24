@@ -28,7 +28,7 @@ const styles = {
   },
 };
 
-class Landing extends PureComponent {
+export class Landing extends PureComponent {
   render() {
     return (
       <ErrorBoundary>
@@ -56,8 +56,6 @@ class Landing extends PureComponent {
 export const formHook = reduxForm({
   form: FORM_NAME,
 });
-
-export { Landing };
 
 export default formHook(
   radium(

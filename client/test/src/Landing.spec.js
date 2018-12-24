@@ -1,11 +1,12 @@
 import React from 'react';
+import { expect } from 'chai';
 import {
   shallow,
 } from 'enzyme';
+
 import ErrorBoundary from '../../containers/ErrorBoundary.jsx';
-import {
+import ConnectedLanding, {
   Landing,
-  formHook,
 } from '../../containers/Landing.jsx';
 
 describe('Landing Component', () => {

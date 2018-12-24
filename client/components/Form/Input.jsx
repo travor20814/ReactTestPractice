@@ -83,7 +83,7 @@ type Props = {
   },
 };
 
-class Input extends PureComponent<Props> {
+export class Input extends PureComponent<Props> {
   render() {
     const {
       input: {
@@ -111,56 +111,54 @@ class Input extends PureComponent<Props> {
           styles.wrapper,
           ...customWrapperStyles,
         ]}>
-        <div style={styles.innerWrap}>
-          <label htmlFor={name} style={[styles.label]}>
-            {error ? (
-              <span style={{ display: 'block', color: 'rgb(149, 28, 28)' }}>
-                !
-              </span>
-            ) : null}
-            {label ? (
-              <span style={styles.labelText}>
-                {label}
-              </span>
-            ) : null}
-            {type === 'textarea' ? (
-              <textarea
-                id={name}
-                key="input"
-                name={name}
-                value={value}
-                style={[
-                  styles.textArea,
-                  error && styles.errorInput,
-                  disabled && styles.disableText,
-                  ...customStyles,
-                ]}
-                placeholder={placeholder}
-                disabled={disabled}
-                onChange={e => onChange(e)} />
-            ) : (
-              <input
-                id={name}
-                key="input"
-                type={type}
-                value={value}
-                checked={value || false}
-                onChange={e => onChange(e)}
-                onKeyPress={(e) => {
-                  if (e.key === 'Enter') e.preventDefault();
-                }}
-                name={name}
-                placeholder={placeholder}
-                disabled={disabled}
-                style={[
-                  styles.input,
-                  error && styles.errorInput,
-                  disabled && styles.disableText,
-                  ...customStyles,
-                ]} />
-            )}
-          </label>
-        </div>
+        <label htmlFor={name} style={[styles.label]}>
+          {error ? (
+            <span style={{ display: 'block', color: 'rgb(149, 28, 28)' }}>
+              !
+            </span>
+          ) : null}
+          {label ? (
+            <span style={styles.labelText}>
+              {label}
+            </span>
+          ) : null}
+          {type === 'textarea' ? (
+            <textarea
+              id={name}
+              key="input"
+              name={name}
+              value={value}
+              style={[
+                styles.textArea,
+                error && styles.errorInput,
+                disabled && styles.disableText,
+                ...customStyles,
+              ]}
+              placeholder={placeholder}
+              disabled={disabled}
+              onChange={e => onChange(e)} />
+          ) : (
+            <input
+              id={name}
+              key="input"
+              type={type}
+              value={value}
+              checked={value || false}
+              onChange={e => onChange(e)}
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') e.preventDefault();
+              }}
+              name={name}
+              placeholder={placeholder}
+              disabled={disabled}
+              style={[
+                styles.input,
+                error && styles.errorInput,
+                disabled && styles.disableText,
+                ...customStyles,
+              ]} />
+          )}
+        </label>
       </div>
     );
   }
