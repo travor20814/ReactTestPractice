@@ -5,7 +5,7 @@ import {
 } from 'enzyme';
 
 import ErrorBoundary from '../../../containers/ErrorBoundary.jsx';
-import ConnectedLanding, {
+import {
   Landing,
 } from '../../../containers/Landing.jsx';
 
