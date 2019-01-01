@@ -1,15 +1,17 @@
 /*
-
 Test Target
 1. Component wrap with label, and label has htmlFor={name}
 2. When label props exist, should have <span> tag to show label
 3. When meta: { error } exist, show error annotation
 4. When type === 'textarea', show <textarea />. Otherwise, show <input />
 -textarea-
-1. textarea has name/value/placeholder/onChange
+1. textarea has name/value/placeholder
+2. textarea onChange work correctly
+3. when disabled(prop) = true, disabled attribute should be true
 -input-
-1. input has type/name/onChange/value/placeholder
-
+1. input has type/name/value/placeholder
+2. input onChange work correctly
+3. when disabled(prop) = true, disabled attribute should be true
 */
 
 import React from 'react';
@@ -17,8 +19,9 @@ import { expect } from 'chai';
 import {
   shallow,
 } from 'enzyme';
+import sinon from 'sinon';
 
-import { Input } from '../../components/Form/Input.jsx';
+import { Input } from '../../../components/Form/Input.jsx';
 
 describe('components/Form/Input.jsx', () => {
   // test target
@@ -29,6 +32,7 @@ describe('components/Form/Input.jsx', () => {
   let label;
   let type;
   let meta;
+  let disabled;
 
   const TextInputSubject = () => {
     const props = {
@@ -37,6 +41,7 @@ describe('components/Form/Input.jsx', () => {
       input,
       placeholder,
       meta,
+      disabled,
     };
 
     return shallow(<Input {...props} />);
@@ -54,6 +59,7 @@ describe('components/Form/Input.jsx', () => {
     meta = {
       error: null,
     };
+    disabled = false;
   });
 
   it('Component wrap with label and has htmlFor props', () => {
@@ -109,6 +115,27 @@ describe('components/Form/Input.jsx', () => {
       expect(textAreaProps.value).to.equal(input.value);
       expect(textAreaProps.placeholder).to.equal(placeholder);
     });
+
+    it('textarea onChange work correctly', () => {
+      type = 'textarea';
+      input = {
+        name: 'Input',
+        onChange: sinon.spy(),
+        value: 'Some Text',
+      };
+      subject = TextInputSubject();
+      const textArea = subject.find('textarea');
+      textArea.simulate('change');
+      expect(input.onChange.callCount).to.equal(1);
+    });
+
+    it('when disabled(prop) = true, disabled attribute should be true', () => {
+      type = 'textarea';
+      disabled = true;
+      subject = TextInputSubject();
+      const textAreaProps = subject.find('textarea').props();
+      expect(textAreaProps.disabled).to.equal(true);
+    });
   });
 
   context('When type is "not" textarea', () => {
@@ -137,6 +164,27 @@ describe('components/Form/Input.jsx', () => {
       expect(textInputProps.name).to.equal(input.name);
       expect(textInputProps.value).to.equal(input.value);
       expect(textInputProps.placeholder).to.equal(placeholder);
+    });
+
+    it('input onChange work correctly', () => {
+      type = 'text';
+      input = {
+        name: 'Input',
+        onChange: sinon.spy(),
+        value: 'Some Text',
+      };
+      subject = TextInputSubject();
+      const textInput = subject.find('input');
+      textInput.simulate('change');
+      expect(input.onChange.callCount).to.equal(1);
+    });
+
+    it('when disabled(prop) = true, disabled attribute should be true', () => {
+      type = 'text';
+      disabled = true;
+      subject = TextInputSubject();
+      const textInputProps = subject.find('input').props();
+      expect(textInputProps.disabled).to.equal(true);
     });
   });
 });

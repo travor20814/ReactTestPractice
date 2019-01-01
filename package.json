@@ -5,11 +5,10 @@
   "main": "entry.jsx",
   "scripts": {
     "client": "webpack-dev-server --host 0.0.0.0 --config ./client/webpack.config.js",
-    "server": "DEBUG=BAOMORE:* nodemon --exec babel-node -- ./server/server.js",
     "seed": "babel-node ./node_modules/.bin/sequelize db:seed:all --seeders-path ./server/seeders --url mysql://rytass:rytass2O15@127.0.0.1/testenv",
     "seed:undo": "babel-node ./node_modules/.bin/sequelize db:seed:undo --seeders-path ./server/seeders --url mysql://rytass:rytass2O15@127.0.0.1/testenv",
     "seed:create": "sequelize seed:generate --seeders-path ./server/seeders",
-    "test:unit": "mocha --require @babel/register --require ./client/test/helpers.js --require ./client/test/dom.js --require ignore-styles './client/test/src/*.spec.js'",
+    "test:unit": "mocha --require @babel/register --require ./client/test/helpers.js --require ./client/test/dom.js --require ignore-styles './client/test/src/**/*.spec.js'",
     "test:unit:watch": "npm run test:unit -- --watch"
   },
   "repository": {
@@ -94,6 +93,7 @@
     "jsdom": "^12.2.0",
     "mocha": "^5.2.0",
     "nodemon": "^1.18.5",
+    "sinon": "^7.2.2",
     "style-loader": "^0.23.1",
     "webpack": "^4.21.0",
     "webpack-cli": "^3.1.2",

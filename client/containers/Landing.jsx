@@ -1,3 +1,4 @@
+// @flow
 import React, { PureComponent } from 'react';
 import radium from 'radium';
 import {
@@ -28,11 +29,23 @@ const styles = {
   },
 };
 
-export class Landing extends PureComponent {
+type Props = {
+  handleSubmit: Function,
+};
+
+export class Landing extends PureComponent<Props> {
+  submit(d) {
+    console.log(d);
+  }
+
   render() {
+    const {
+      handleSubmit,
+    } = this.props;
+
     return (
       <ErrorBoundary>
-        <form style={styles.wrapper}>
+        <form style={styles.wrapper} onSubmit={handleSubmit(d => this.submit(d))}>
           <div style={styles.inputWrapper}>
             <Field
               name="name"
@@ -47,6 +60,7 @@ export class Landing extends PureComponent {
               placeholder="輸入綽號"
               component={Input} />
           </div>
+          <button type="submit" />
         </form>
       </ErrorBoundary>
     );
