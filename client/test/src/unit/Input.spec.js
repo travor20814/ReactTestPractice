@@ -1,6 +1,6 @@
 /*
 Test Target
-1. Component wrap with label, and label has htmlFor={name}
+1. Component has label, and label has htmlFor={name}
 2. When label props exist, should have <span> tag to show label
 3. When meta: { error } exist, show error annotation
 4. When type === 'textarea', show <textarea />. Otherwise, show <input />
@@ -62,7 +62,7 @@ describe('components/Form/Input.jsx', () => {
     disabled = false;
   });
 
-  it('Component wrap with label and has htmlFor props', () => {
+  it('Component has label and htmlFor props', () => {
     input = {
       name: 'Input',
     };
