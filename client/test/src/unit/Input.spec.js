@@ -62,7 +62,7 @@ describe('components/Form/Input.jsx', () => {
     disabled = false;
   });
 
-  it('Component has label and htmlFor props', () => {
+  it('Component has label and htmlFor={name}', () => {
     input = {
       name: 'Input',
     };
