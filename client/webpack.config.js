@@ -30,7 +30,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      API_HOST: `'${process.env.API_HOST || 'http://psp.rytass.com'}'`,
+      API_HOST: `'${process.env.API_HOST || ''}'`,
     }),
     ...(NODE_ENV !== 'production' ? developmentPlugins : productionPlugins),
     new webpack.NoEmitOnErrorsPlugin(),

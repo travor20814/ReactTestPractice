@@ -10,6 +10,7 @@ import {
 import { FETCH_FOOD_LIST } from '../queries/Global.js';
 
 const Landing = lazy(() => import('./Landing.jsx'));
+const RenderTestPage = lazy(() => import('./RenderTestPage.jsx'));
 const SideBar = lazy(() => import('./SideBar.jsx'));
 
 const styles = {
@@ -63,6 +64,7 @@ class MainBoard extends Component<Props> {
           <div style={styles.mainBoard}>
             <Switch>
               <Route path="/landing" component={Landing} />
+              <Route path="/article" component={RenderTestPage} />
             </Switch>
           </div>
         </Suspense>
